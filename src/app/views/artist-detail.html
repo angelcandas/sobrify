@@ -1,0 +1,41 @@
+<div *ngIf="artist && identity" class="artist-box">
+	<div class="artist-head-card">
+		<div class="image">
+			<img src="{{url+'get-image-artist/'+artist.image}}" *ngIf="artist.image && artist.image != 'null'"/>
+		</div>
+		<div class="data">
+		<div class="head-title">
+			<h1>{{artist.name}}</h1>
+		</div>
+			
+			<p class="descritption">{{artist.description}}</p>
+			<a *ngIf="identity.role == 'ROLE_ADMIN'" [routerLink]="['/album-add',artist._id]" class="btn btn-light" >
+			Añadir Album
+			</a>
+		</div>
+		<div class="clearfix"></div>
+		<div id="gallery-albums" *ngIf="albums">
+			<ul class="album-list row">
+				<li *ngFor="let album of albums" class="album-item">
+					<div class="album-image">
+						<img src="{{url+'get-image-album/'+album.image}}">
+					</div>
+					<div class="album-name">
+						<a [routerLink]="['/album',album._id]">
+							{{album.title}} · {{album.year}}
+						</a>
+						<div class="buttons" *ngIf="identity.role == 'ROLE_ADMIN'">
+							<a [routerLink]="['/album-edit',album._id]" class="btn btn-sm btn-warning">Editar</a>
+							<a (click)="onDeleteConfirm(album._id)" class="btn btn-sm btn-danger">Eliminar</a>
+						</div>
+						<div class="seguro" *ngIf="confirmado == album._id">
+							<a (click)="onDeleteAlbum(album._id)" class="btn btn-sm btn-danger">Eliminar</a>
+							<a (click)="onCancelAlbum()" class="btn btn-sm btn-dark">Cancelar</a>
+						</div>
+					</div>
+				</li>
+				
+			</ul>
+		</div>
+	</div>
+</div>

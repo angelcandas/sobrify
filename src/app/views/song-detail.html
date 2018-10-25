@@ -1,0 +1,36 @@
+<div *ngIf="song && identity" class="song-box">
+	<div class="song-head-card">
+		<div class="data">
+			<h1>{{song.name}}</h1>
+			<p>De <a [routerLink]="['/artista',album.artist._id]">{{artist.name}}</a> 
+			- Album <a [routerLink]="['/album','song.album._id']">{{album.title}}</a></p>
+			<p>Nº {{song.number}} - Duracion: {{songDuration}}</p>
+		</div>
+		<div class="clearfix"></div>
+		<hr>
+		<div id="gallery-songs" *ngIf="songs">
+			<ul class="song-list row">
+				<li *ngFor="let song of songs" class="song-item">
+					<div class="song-image">
+						<img src="{{url+'get-image-song/'+song.image}}">
+					</div>
+					<div class="song-name">
+						<a [routerLink]="['/song','']">
+							{{song.title}} {{song.year}}
+						</a>
+
+						<div class="buttons" *ngIf="identity.role == 'ROLE_ADMIN'">
+							<a [routerLink]="['/song-edit','']" class="btn btn-sm btn-warning">Editar</a>
+							<a (click)="onDeleteConfirm('')" class="btn btn-sm btn-danger">Eliminar</a>
+						</div>
+						<div class="seguro" *ngIf="confirmado == ''">
+							<a (click)="onDeleteAlbum('')" class="btn btn-sm btn-danger">Eliminar</a>
+							<a (click)="onCancelAlbum()" class="btn btn-sm btn-dark">Cancelar</a>
+						</div>
+					</div>
+				</li>
+				
+			</ul>
+		</div>
+	</div>
+</div>
