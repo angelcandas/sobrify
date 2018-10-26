@@ -1,7 +1,7 @@
 <div *ngIf="artist && identity" class="artist-box">
 	<div class="artist-head-card">
 		<div class="image">
-			<img src="{{process.env.CLOUDCUBE_URL+'get-image-artist/'+artist.image}}" *ngIf="artist.image && artist.image != 'null'"/>
+			<img src="{{urlfile'get-image-artist/'+artist.image}}" *ngIf="artist.image && artist.image != 'null'"/>
 		</div>
 		<div class="data">
 		<div class="head-title">
@@ -18,7 +18,7 @@
 			<ul class="album-list row">
 				<li *ngFor="let album of albums" class="album-item">
 					<div class="album-image">
-						<img src="{{process.env.CLOUDCUBE_URL+'get-image-album/'+album.image}}">
+						<img src="{{urlfile'get-image-album/'+album.image}}">
 					</div>
 					<div class="album-name">
 						<a [routerLink]="['/album',album._id]">

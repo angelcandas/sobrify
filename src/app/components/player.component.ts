@@ -8,7 +8,7 @@ import { GLOBAL } from '../services/global'
 	<div class="player-div row" >
 		<div class="album-image col-lg-1">
 			<span *ngIf="song.album">
-				<img id="play-image-album" src="{{url+'get-image-album/'+song.album.image}}">
+				<img id="play-image-album" src="{{urlfile+'get-image-album/'+song.album.image}}">
 			</span>
 			<span *ngIf="!song.album">	
 				<img id="play-image-album" src="{{'../assets/images/note.png'}}"/>
@@ -27,7 +27,7 @@ import { GLOBAL } from '../services/global'
 		</div>
 		<div class="col-lg-5">
 			<audio controls id="player">
-				<source id="mp3-source" src="{{url+'get-song/'+song.file}}" type="audio/mpeg">
+				<source id="mp3-source" src="{{urlfile+'get-song/'+song.file}}" type="audio/mpeg">
 				Tu navegador no es compatible
 			</audio>
 		</div>
@@ -40,11 +40,13 @@ export class PlayerComponent implements OnInit{
 
 	public url: string;
 	public song;
+public urlfile: string;
 
 
 	constructor(){
 		this.url = GLOBAL.url;
 		this.song=new Song("","","","","")
+		this.urlfile = GLOBAL.urlfile;
 		window.onload=this.load;
 	}
 

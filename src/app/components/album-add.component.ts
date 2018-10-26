@@ -23,6 +23,7 @@ export class AlbumAddComponent implements OnInit{
 	public token;
 	public alertMessage;
 	public url: string;
+	public urlfile: string;
 
 	constructor(
 		private _route: ActivatedRoute,
@@ -34,6 +35,7 @@ export class AlbumAddComponent implements OnInit{
 		this.identity = this._userService.getIdentity();
 		this.token = this._userService.getToken();
 		this.url = GLOBAL.url;
+		this.urlfile = GLOBAL.urlfile;
 		this.album = new Album("","","2017","","")
 	}
 	ngOnInit(){

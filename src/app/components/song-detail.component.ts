@@ -29,13 +29,15 @@ export class SongDetailComponent implements OnInit{
 	public song: Song;
 	public temporal;
 	public songDuration;
+	public urlfile: string;
+
 	constructor(
 		private _route: ActivatedRoute,
 		private _router: Router,
 		private _userService: UserService,
 		private _albumService: AlbumService,
 		private _songService: SongService,
-	){
+		){
 		this.titulo = 'Detalle de album';
 		this.identity = this._userService.getIdentity();
 		this.token = this._userService.getToken();
@@ -45,6 +47,7 @@ export class SongDetailComponent implements OnInit{
 		this.song_id;
 		this.confirmado=null;
 		this.temporal;
+		this.urlfile = GLOBAL.urlfile;
 		this.album=new Album("","","","","");
 		this.song=new Song("","","","","")
 		this.artist=new Artist("","","")
@@ -59,19 +62,19 @@ export class SongDetailComponent implements OnInit{
 	getSong(){
 		console.log("Get Song")
 		this._route.params.forEach(Params=>{
-				let song_id = Params['song'];
-				console.log(song_id)
-				this._songService.getSong(this.token,song_id).subscribe(
-					res=>{
-						this.song=res.song;
-						this.album= res.song.album;
-						this.artist = res.song.album.artist;
-						this.songDuration=Math.floor(+this.song.duration/60)+':'+(+this.song.duration%60);
+			let song_id = Params['song'];
+			console.log(song_id)
+			this._songService.getSong(this.token,song_id).subscribe(
+				res=>{
+					this.song=res.song;
+					this.album= res.song.album;
+					this.artist = res.song.album.artist;
+					this.songDuration=Math.floor(+this.song.duration/60)+':'+(+this.song.duration%60);
 				},
-					err=>{
-						console.log(err)
-					})
-			})
+				err=>{
+					console.log(err)
+				})
+		})
 	}
 
 }

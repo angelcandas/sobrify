@@ -19,6 +19,7 @@ export class AlbumListComponent implements OnInit{
 	public identity;
 	public token;
 	public url: string;
+	public urlfile: string;
 	public next_page;
 	public prev_page;
 	public alertMessage;
@@ -34,6 +35,7 @@ export class AlbumListComponent implements OnInit{
 		this.identity = this._userService.getIdentity();
 		this.token = this._userService.getToken();
 		this.url = GLOBAL.url;
+		this.urlfile = GLOBAL.urlfile;
 		this.next_page =1;
 		this.prev_page =1;
 		this.maxPage=10;

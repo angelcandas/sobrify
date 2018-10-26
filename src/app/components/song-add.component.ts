@@ -26,6 +26,7 @@ export class SongAddComponent implements OnInit{
 	public token;
 	public alertMessage;
 	public url: string;
+	public urlfile: string;
 
 	constructor(
 		private _route: ActivatedRoute,
@@ -33,11 +34,12 @@ export class SongAddComponent implements OnInit{
 		private _userService: UserService,
 		private _albumService: AlbumService,
 		private _songService: SongService,
-	){
+		){
 		this.titulo = 'Añadir nueva cancion';
 		this.identity = this._userService.getIdentity();
 		this.token = this._userService.getToken();
 		this.url = GLOBAL.url;
+		this.urlfile = GLOBAL.urlfile;
 		this.album = new Album("","","","","");
 		this.song = new Song("","","","","")
 	}
@@ -66,28 +68,28 @@ export class SongAddComponent implements OnInit{
 
 	onSubmit(){
 		this._route.params.forEach((params: Params)=>{
-				let album_id = params['album'];
-				this.song.album = album_id;
-			})
+			let album_id = params['album'];
+			this.song.album = album_id;
+		})
 		this._songService.addSong(this.token,this.song).subscribe(
 			response=>{
-					console.log(response)
-					if(!response.song){
-						this.alertMessage='Error en el servicio'
-					}else{
-						this.album = response.song;
-						this.alertMessage=this.album.title+' se ha añadido correctamente';
-						
-						this._router.navigate(['/song-edit',response.song._id])
-					}
+				console.log(response)
+				if(!response.song){
+					this.alertMessage='Error en el servicio'
+				}else{
+					this.album = response.song;
+					this.alertMessage=this.album.title+' se ha añadido correctamente';
+					
+					this._router.navigate(['/song-edit',response.song._id])
+				}
 			},
-				error=>{
-			var errorMessage = <any>error;
-	  		if (errorMessage != null) {
-	  			var body = JSON.parse(error._body)
-	  			this.alertMessage=body.message
-	  			}
+			error=>{
+				var errorMessage = <any>error;
+				if (errorMessage != null) {
+					var body = JSON.parse(error._body)
+					this.alertMessage=body.message
+				}
 			})
-			console.log(this.album)
-		}
+		console.log(this.album)
+	}
 }

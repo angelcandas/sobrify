@@ -21,6 +21,7 @@ export class ArtistEditComponent implements OnInit{
 	public token;
 	public alertMessage;
 	public url: string;
+	public urlfile: string;
 	public is_edit;
 
 	constructor(
@@ -34,6 +35,7 @@ export class ArtistEditComponent implements OnInit{
 		this.identity = this._userService.getIdentity();
 		this.token = this._userService.getToken();
 		this.url = GLOBAL.url;
+		this.urlfile = GLOBAL.urlfile;
 		this.artist = new Artist("","","");
 		this.is_edit = true;
 	}

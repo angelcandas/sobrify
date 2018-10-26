@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit{
 	public identity;
 	public token;
 	public url: string;	
+	
 
 	constructor(
 		private _userService: UserService,

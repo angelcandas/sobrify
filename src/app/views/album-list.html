@@ -11,7 +11,7 @@
 	<ul class="album-list row" *ngIf="identity">
 		<li *ngFor="let album of albums" class="album-item">
 			<div class="album-image">
-				<img src="{{url+'get-image-album/'+album.image}}"/>
+				<img src="{{urlfile+'get-image-album/'+album.image}}"/>
 			</div>
 			<div class="album-name">
 				<a [routerLink]="['/album',album._id]">

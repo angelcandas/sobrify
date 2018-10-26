@@ -25,19 +25,20 @@ export class ArtistDetailComponent implements OnInit{
 	public is_edit;
 	public artist_id;
 	public confirmado;
-
+	public urlfile: string;
 	constructor(
 		private _route: ActivatedRoute,
 		private _router: Router,
 		private _userService: UserService,
 		private _artistService: ArtistService,
 		private _albumService: AlbumService,
-	){
+		){
 		this.titulo = 'Editar artista';
 		this.identity = this._userService.getIdentity();
 		this.token = this._userService.getToken();
 		this.url = GLOBAL.url;
 		this.is_edit = true;
+		this.urlfile = GLOBAL.urlfile;
 		this.artist_id;
 		this.confirmado=null;
 	}
@@ -47,24 +48,24 @@ export class ArtistDetailComponent implements OnInit{
 		this.getArtist();
 	}
 
-		getAlbums(artist_id: string){
-			this._albumService.getAlbums(this.token,artist_id).subscribe(
-				res =>{
-					console.log(res)
-					if(!res.albums){
-						console.log("no recibo albums")
-						this._router.navigate(['/'])
-					}else{
+	getAlbums(artist_id: string){
+		this._albumService.getAlbums(this.token,artist_id).subscribe(
+			res =>{
+				console.log(res)
+				if(!res.albums){
+					console.log("no recibo albums")
+					this._router.navigate(['/'])
+				}else{
 					this.albums = res.albums;
-					}
-				},
-				error=>{
-					var errorMessage = <any>error;
-			  		if (errorMessage != null) {
-			  			var body = JSON.parse(error._body)
-			  			this.alertMessage=body.message
-			  			}
-				})
+				}
+			},
+			error=>{
+				var errorMessage = <any>error;
+				if (errorMessage != null) {
+					var body = JSON.parse(error._body)
+					this.alertMessage=body.message
+				}
+			})
 	}
 	onDeleteConfirm(id){
 		this.confirmado = id;
@@ -74,22 +75,22 @@ export class ArtistDetailComponent implements OnInit{
 	}
 	onDeleteAlbum(id){
 		this._albumService.deleteAlbum(this.token,id).subscribe(
-				res =>{
-					console.log(res)
-					if(!res.albumRemoved){
-						this.alertMessage="Album no eliminado correctamente"
-					}else{
-						this.getAlbums(this.artist_id);
+			res =>{
+				console.log(res)
+				if(!res.albumRemoved){
+					this.alertMessage="Album no eliminado correctamente"
+				}else{
+					this.getAlbums(this.artist_id);
 					//this.maxPage= Math.ceil(res.totalItems/this.albums.length)
-					}
-				},
-				error=>{
-					var errorMessage = <any>error;
-			  		if (errorMessage != null) {
-			  			var body = JSON.parse(error._body)
-			  			this.alertMessage=body.message
-			  			}
-				})
+				}
+			},
+			error=>{
+				var errorMessage = <any>error;
+				if (errorMessage != null) {
+					var body = JSON.parse(error._body)
+					this.alertMessage=body.message
+				}
+			})
 	}
 
 
@@ -102,17 +103,17 @@ export class ArtistDetailComponent implements OnInit{
 						console.log("no recibo artista")
 						this._router.navigate(['/'])
 					}else{
-					this.artist = res.artist;
-					this.artist_id = res.artist._id
-					this.getAlbums(this.artist_id)
+						this.artist = res.artist;
+						this.artist_id = res.artist._id
+						this.getAlbums(this.artist_id)
 					}
 				},
 				error=>{
 					var errorMessage = <any>error;
-			  		if (errorMessage != null) {
-			  			var body = JSON.parse(error._body)
-			  			this.alertMessage=body.message
-			  			}
+					if (errorMessage != null) {
+						var body = JSON.parse(error._body)
+						this.alertMessage=body.message
+					}
 				})
 		})
 	}

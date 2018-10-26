@@ -29,6 +29,7 @@ export class SongEditComponent implements OnInit{
 	public url: string;
 	public is_edit;
 	public song_id;
+	public urlfile: string;
 	constructor(
 		private _route: ActivatedRoute,
 		private _router: Router,
@@ -41,6 +42,7 @@ export class SongEditComponent implements OnInit{
 		this.identity = this._userService.getIdentity();
 		this.token = this._userService.getToken();
 		this.url = GLOBAL.url;
+this.urlfile = GLOBAL.urlfile;
 		this.album = new Album("","","","","");
 		this.song = new Song("","","","","")
 		this.is_edit = true;

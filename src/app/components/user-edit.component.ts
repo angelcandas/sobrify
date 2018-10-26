@@ -18,7 +18,7 @@ export class UserEditComponent implements OnInit {
 	public alertMessage;
 	public filesToUpload;
 	public url: string;
-
+	public urlfile: string;
 	constructor(
 			private _userService: UserService
 		){
@@ -27,6 +27,8 @@ export class UserEditComponent implements OnInit {
 			this.token=this._userService.getToken();
 			this.user = this.identity;
 			this.url = GLOBAL.url;
+			this.urlfile = GLOBAL.urlfile;
+
 		}
 
 	ngOnInit(){

@@ -12,7 +12,7 @@
 			<ul class="song-list row">
 				<li *ngFor="let song of songs" class="song-item">
 					<div class="song-image">
-						<img src="{{process.env.CLOUDCUBE_URL+'get-image-song/'+song.image}}">
+						<img src="{{urlfile'get-image-song/'+song.image}}">
 					</div>
 					<div class="song-name">
 						<a [routerLink]="['/song','']">
