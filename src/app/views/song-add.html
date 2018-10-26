@@ -34,7 +34,7 @@
 			<div class="song_file_for_edit" *ngIf="is_edit && song.file">
 				<p>{{song.name}}</p>
 				<audio controls>
-				  <source src="{{url+'get-song/'+song.file}}" type="audio/mpeg">
+				  <source src="{{process.env.CLOUDCUBE_URL+'get-song/'+song.file}}" type="audio/mpeg">
 				Tu navegador no soporta el reproductor de audio
 				</audio>
 

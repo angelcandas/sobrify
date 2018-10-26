@@ -23,7 +23,7 @@
 		</p>
 		<div *ngIf="is_edit">
 			<div class="image_for_edit" *ngIf="artist.image && artist.image != 'null'">
-				<img class="col-6" src="{{url+'get-image-artist/'+artist.image}}"/>
+				<img class="col-6" src="{{process.env.CLOUDCUBE_URL+'get-image-artist/'+artist.image}}"/>
 			</div>
 			<p>
 				<label> Sube la imagen del artista</label>

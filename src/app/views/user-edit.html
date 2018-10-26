@@ -36,7 +36,7 @@
 				</span>
 		</p>
 		<div class="image_for_edit" *ngIf="user.image && user.image !='null'" >
-			<img src="{{url+'get-image-file/'+user.image}}" style="width:200px;"/>
+			<img src="{{process.env.CLOUDCUBE_URL+'get-image-file/'+user.image}}" style="width:200px;"/>
 		</div>
 		<p>
 			<label>Sube tu foto:</label>
