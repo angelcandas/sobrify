@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http,Response,Headers,RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { GLOBAL } from './global';
 import { Album } from '../models/album';
 import { Artist } from '../models/artist';
