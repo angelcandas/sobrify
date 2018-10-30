@@ -11,7 +11,7 @@ import { SongService} from'../services/song.service';
 @Component({
 	selector: 'album',
 	templateUrl: '../views/album-detail.html',
-	providers: [UserService,,AlbumService,SongService]
+	providers: [UserService,AlbumService,SongService]
 })
 
 export class AlbumDetailComponent implements OnInit{
