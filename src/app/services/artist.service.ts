@@ -9,9 +9,10 @@ export class  ArtistService{
 	public identity;
 	public token;
 	public url: string;
-
+	public urlfile: string;
 	constructor(private _http: Http){
 		this.url = GLOBAL.url;
+		this.urlfile=GLOBAL.urlfile;
 	}
 
 	addArtist(token, artist: Artist){

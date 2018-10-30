@@ -18,6 +18,7 @@ export class AppComponent implements OnInit{
 	public errorMessage;
 	public alertRegister;
 	public url:string;
+	public urlfile:string;
 	constructor(
 		private _userService: UserService,
 		private _route: ActivatedRoute,
@@ -26,6 +27,7 @@ export class AppComponent implements OnInit{
 		this.user = new User("","","","","ROLE_USER","","");
 		this.user_register = new User("","","","","ROLE_USER","","");
 		this.url = GLOBAL.url;
+		this.urlfile = GLOBAL.urlfile;
 		}
 	ngOnInit(){
 		this.identity=this._userService.getIdentity();

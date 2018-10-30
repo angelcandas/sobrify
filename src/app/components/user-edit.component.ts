@@ -51,7 +51,7 @@ export class UserEditComponent implements OnInit {
 							(result: any)=>{
 								this.user.image = result.image;
 								localStorage.setItem('identity',JSON.stringify(this.user));
-								let image_path = this.url+'get-image-file/'+this.user.image;
+								let image_path = this.urlfile+this.user.image;
 								document.getElementById('image-logged').setAttribute('src',image_path);
 								console.log("image path:"+image_path);
 							}
@@ -80,6 +80,7 @@ export class UserEditComponent implements OnInit {
 			var formData:any = new FormData();
 			var xhr = new XMLHttpRequest();
 			for(var i = 0; i< files.length; i++){
+				console.log(files)
 				formData.append('image',files[i],files[i].name)
 			}
 			xhr.onreadystatechange = function(){

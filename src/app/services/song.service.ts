@@ -12,9 +12,10 @@ export class  SongService{
 	public identity;
 	public token;
 	public url: string;
-
+	public urlfile: string;
 	constructor(private _http: Http){
 		this.url = GLOBAL.url;
+		this.urlfile = GLOBAL.urlfile;
 	}
 
 	addSong(token, song: Song){

@@ -1,7 +1,7 @@
 <div *ngIf="album && identity" class="album-box">
 	<div class="album-head-card">
 		<div class="image">
-			<img src="{{urlfile'get-image-album/'+album.image}}" *ngIf="album.image && album.image != 'null'"/>
+			<img src="{{urlfile+album.image}}" *ngIf="album.image && album.image != 'null'"/>
 		</div>
 		<div class="data">
 			<p>ALBUM</p>

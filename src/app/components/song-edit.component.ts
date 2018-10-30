@@ -105,13 +105,14 @@ this.urlfile = GLOBAL.urlfile;
 						this.alertMessage='Error en el servicio'
 					}else{
 						this.song = response.song;
-						this.alertMessage=this.album.title+' se ha actualizado correctamente';
+						this.alertMessage=this.song.name+' se ha actualizado correctamente';
 								if(!this.filesToUpload){
 									this._router.navigate(['/album',this.album['_id']])
 								}else{
 								this._uploadService.makeFileRequest(this.url+'upload-song/'+this.song_id,[],this.filesToUpload,this.token,'file')
 								.then(
 									(result)=>{
+										console.log(result)
 										this._router.navigate(['/album',this.album['_id']])
 									},
 									(error)=>{
@@ -127,7 +128,6 @@ this.urlfile = GLOBAL.urlfile;
 	  			this.alertMessage=body.message
 	  			}
 			})
-			console.log(this.album)
 
 		}
 

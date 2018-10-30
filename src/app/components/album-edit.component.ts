@@ -42,7 +42,7 @@ export class AlbumEditComponent implements OnInit{
 		this.album = new Album("","","2017","","")
 		this.album_id='';
 		this.is_edit=true;
-		.urlfile = GLOBAL.urlfile;
+		this.urlfile = GLOBAL.urlfile;
 	}
 	ngOnInit(){
 		console.log("artist-add esta cargado")

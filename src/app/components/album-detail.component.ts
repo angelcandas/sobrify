@@ -23,6 +23,8 @@ export class AlbumDetailComponent implements OnInit{
 	public album_id;
 	public alertMessage;
 	public url: string;
+	public urlfile: string;
+
 	public is_edit;
 	public artist_id;
 	public confirmado;
@@ -33,7 +35,7 @@ export class AlbumDetailComponent implements OnInit{
 		private _userService: UserService,
 		private _albumService: AlbumService,
 		private _songService: SongService,
-	){
+	){this.urlfile = GLOBAL.urlfile;
 		this.titulo = 'Detalle de album';
 		this.identity = this._userService.getIdentity();
 		this.token = this._userService.getToken();
@@ -114,8 +116,8 @@ export class AlbumDetailComponent implements OnInit{
 
 	startPlayer(song){
 		let song_player = JSON.stringify(song);
-		let file_path = this.url + 'get-song/'+song.file;
-		let image_path = this.url+'get-image-album/'+song.album.image;
+		let file_path = this.urlfile+song.file;
+		let image_path = this.urlfile+song.album.image;
 		console.log(document.getElementById('mp3-source').getAttribute('src'))
 
 		localStorage.setItem('sound_song',song_player);
