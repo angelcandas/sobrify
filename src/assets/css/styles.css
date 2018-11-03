@@ -9,6 +9,7 @@
 html,body,app-root{
 	margin: 0px;
 	height: 100%;
+	width: 100%;
 	background: #333;
 	color:var(--letra);
 
@@ -27,23 +28,24 @@ a{
 	padding-bottom: 4px;
 }
 .central{
-	height: 570px;
-	padding-bottom: 300px;
+	height: 90%;
+	padding-bottom: 10%;
+	width: 90%;
 	overflow-y: scroll;
 }
 .seguro{
-    margin-top: -32px;
-    background: #222326;
+	margin-top: -32px;
+	background: #222326;
 	position: absolute;
 	height: 40px;	
 }
 .seguro-list-songs{
 	
-    background: #333;
+	background: #333;
 }
 .head-title{
 	margin-top: 20px;
-	font-size: 20px;
+	font-size: 1em;
 	font-weight: bold;
 	text-transform: uppercase;
 	margin-bottom: 25px;
@@ -54,12 +56,14 @@ a{
 	color: white;
 	background: #1c1c1f;
 	height: 100%;
+	width: 8%;
+	min-width: 50px;
 }
 
 .navigation a{
 	color: #ddd;
 	margin-top: 20px;
-	margin-bottom: 20px;
+	margin-bottom: 0px;
 	display: block;
 	text-decoration: none;
 }
@@ -85,7 +89,7 @@ a{
 	position: absolute;
 	bottom: 0px;
 	border-top: 1px solid #444;
-	width: 75%;
+	width: 8%;
 }
 
 #user_logged .user-image{
@@ -100,7 +104,7 @@ a{
 
 #user_logged .user-image img{
 	height: 57px;
-	}
+}
 #new-artist-form{
 	
 }
@@ -117,6 +121,7 @@ a{
 	margin-top: 30px;
 	list-style: none;
 }	
+
 .artist-item{
 	width: 200px;
 	margin: 0px;
@@ -262,12 +267,13 @@ a{
 }
 /*Player*/
 .player-div{
-	height: 100px;
+	height: 80px;
 	background: #1c1c1f;
 	position: fixed;
 	width: 90.2%;
 	bottom: 0px;
-	padding: 10px;
+	padding-bottom: 0px;
+	padding-left: 10px;
 	margin-left: -15px;
 	border-left: 1px solid #444;
 }
@@ -284,12 +290,12 @@ a{
 }
 
 .player .audio-file{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 43px;
-    margin-top: 0px;
-    margin-left: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 43px;
+	margin-top: 0px;
+	margin-left: 10px;
 }
 .player .audio-file span{
 	height: 2em;
@@ -310,4 +316,57 @@ a{
 	position: absolute;
 	float: bottom;
 	bottom: 0px;
+}
+
+
+
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    html,body,app-root{
+    	height: 100%;
+    	width: 100%;
+    }
+    .navigation{
+    	width: 15%;
+    }
+    .central{
+    	height: 100%;
+    	width: 85%;
+    	padding-right: 0px;
+    }
+    .artist-list,
+	.album-list{
+		padding-bottom: 200px;	
+		display: flex;
+		justify-content: all;
+		align-items: flex-start;
+		margin: 0px;
+		padding: 0px;
+		margin-top: 30px;
+		list-style: none;
+		font-size: 0.5em;
+	}
+	.artist-item,
+	.album-item{
+	width: 20%;
+	margin: 0px;
+	padding: 0px;
+	height: 20%;
+	/*border: 1px solid #444;*/
+	margin-top: 10px;
+}
+.artist-item .artist-image,
+.album-item .album-image{
+	background: black;
+	width: 50px;
+	height: 50px;
+	overflow: hidden;
+}
+.artist-item .artist-image img,
+.album-item .album-image img{
+	width: 100%;
+	min-height: 100%;
+	object-fit: cover;
+}
 }

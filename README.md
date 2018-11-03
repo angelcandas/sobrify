@@ -1,32 +1,146 @@
-# Client
+# Sobrify
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.28.3.
+[![N|Solid](https://github.com/angelcandas/sobrify/blob/master/icon.png?raw=true)](https://nodesource.com/products/nsolid)
 
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
-## Code scaffolding
+Sobrify is a cloud based spotify like app, build as an Angular6 test app
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
+  - Allows register and session persistance login
+  - Admin user with edit privileges can add artists, albums and songs
+  - Cloud based services
 
-## Build
+### Tech
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Dillinger uses a number of open source projects to work properly:
 
-## Running unit tests
+* [Angular6] - HTML enhanced for web apps!
+* [node.js] - evented I/O for the backend [sobrify-back]
+* [Express] - fast node.js network app framework [@tjholowaychuk]
+* [S3] - Amazon static storage system
+* [Breakdance](http://breakdance.io) - HTML to Markdown converter
+* [jQuery] - duh
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+And of course Dillinger itself is open source with a [public repository][dill]
+ on GitHub.
 
-## Running end-to-end tests
+### Installation
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+Dillinger requires [Node.js](https://nodejs.org/) v4+ to run.
 
-## Deploying to GitHub Pages
+Install the dependencies and devDependencies and start the server.
 
-Run `ng github-pages:deploy` to deploy to GitHub Pages.
+```sh
+$ cd dillinger
+$ npm install -d
+$ node app
+```
 
-## Further help
+For production environments...
 
-To get more help on the `angular-cli` use `ng help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-"# sobrify" 
+```sh
+$ npm install --production
+$ NODE_ENV=production node app
+```
+
+### Plugins
+
+Dillinger is currently extended with the following plugins. Instructions on how to use them in your own application are linked below.
+
+| Plugin | README |
+| ------ | ------ |
+| Dropbox | [plugins/dropbox/README.md][PlDb] |
+| Github | [plugins/github/README.md][PlGh] |
+| Google Drive | [plugins/googledrive/README.md][PlGd] |
+| OneDrive | [plugins/onedrive/README.md][PlOd] |
+| Medium | [plugins/medium/README.md][PlMe] |
+| Google Analytics | [plugins/googleanalytics/README.md][PlGa] |
+
+
+### Development
+
+Want to contribute? Great!
+
+Dillinger uses Gulp + Webpack for fast developing.
+Make a change in your file and instantanously see your updates!
+
+Open your favorite Terminal and run these commands.
+
+First Tab:
+```sh
+$ node app
+```
+
+Second Tab:
+```sh
+$ gulp watch
+```
+
+(optional) Third:
+```sh
+$ karma test
+```
+#### Building for source
+For production release:
+```sh
+$ gulp build --prod
+```
+Generating pre-built zip archives for distribution:
+```sh
+$ gulp build dist --prod
+```
+### Docker
+Dillinger is very easy to install and deploy in a Docker container.
+
+By default, the Docker will expose port 8080, so change this within the Dockerfile if necessary. When ready, simply use the Dockerfile to build the image.
+
+```sh
+cd dillinger
+docker build -t joemccann/dillinger:${package.json.version} .
+```
+This will create the dillinger image and pull in the necessary dependencies. Be sure to swap out `${package.json.version}` with the actual version of Dillinger.
+
+Once done, run the Docker image and map the port to whatever you wish on your host. In this example, we simply map port 8000 of the host to port 8080 of the Docker (or whatever port was exposed in the Dockerfile):
+
+```sh
+docker run -d -p 8000:8080 --restart="always" <youruser>/dillinger:${package.json.version}
+```
+
+Verify the deployment by navigating to your server address in your preferred browser.
+
+```sh
+127.0.0.1:8000
+```
+
+
+### Todos
+ - Add playlist functionality
+ - Add friend system
+ - Adjust mobile template
+
+License
+----
+
+MIT
+
+
+**Free Software, Hell Yeah!**
+
+[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
+
+
+   [dill]: <https://github.com/joemccann/dillinger>
+   [git-repo-url]: <https://github.com/joemccann/dillinger.git>
+   [john gruber]: <http://daringfireball.net>
+   [df1]: <http://daringfireball.net/projects/markdown/>
+   [markdown-it]: <https://github.com/markdown-it/markdown-it>
+   [Ace Editor]: <http://ace.ajax.org>
+   [node.js]: <http://nodejs.org>
+   [Twitter Bootstrap]: <http://twitter.github.com/bootstrap/>
+   [jQuery]: <http://jquery.com>
+   [@tjholowaychuk]: <http://twitter.com/tjholowaychuk>
+   [express]: <http://expressjs.com>
+   [Angular6]: <https://angular.io/>
+   [Gulp]: <http://gulpjs.com>
+   [sobrify-back]: <https://github.com/angelcandas/sobrify-back>
+>
