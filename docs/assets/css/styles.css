@@ -3,15 +3,17 @@
 :root{
 	--letra:#EEE;
 }
-
 /*Styles*/
 
 html,body,app-root{
 	margin: 0px;
 	height: 100%;
 	width: 100%;
-	background: #333;
+	min-width: 360px;
+	background: linear-gradient(#777, #333 50%, #333);
+	background-attachment: fixed;
 	color:var(--letra);
+
 
 }
 a{
@@ -22,16 +24,20 @@ a{
 	top: 1em;
 	right: 1em;
 }
-
+.content{
+	margin-left: 0px;
+}
 .actived{
 	border-bottom: 4px solid #84bd00;
 	padding-bottom: 4px;
 }
 .central{
-	height: 90%;
+	height: 100%;
+	width: 100%;
 	padding-bottom: 10%;
-	width: 90%;
-	overflow-y: scroll;
+	padding-left: 150px;
+	/*overflow-y: scroll;*/
+/*	box-sizing: content-box;*/
 }
 .seguro{
 	margin-top: -32px;
@@ -52,13 +58,27 @@ a{
 	display: block;
 }
 .navigation{
+	width: 150px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items:center;
+	background: #1c1c1f;
+	position: fixed;
+	margin-bottom: 0px;
+
+}
+/*.navigation{
 	text-align: center;
+	display: flex;
+	position: fixed;
+	z-index: 1000;
 	color: white;
 	background: #1c1c1f;
 	height: 100%;
-	width: 8%;
-	min-width: 50px;
-}
+	width: 150px;
+	min-width: 150px;
+}*/
 
 .navigation a{
 	color: #ddd;
@@ -66,8 +86,10 @@ a{
 	margin-bottom: 0px;
 	display: block;
 	text-decoration: none;
+	transition: font-size 0.1s;
 }
 .navigation a:hover{
+	font-size: 1.2em;
 	color: white;
 }
 
@@ -84,12 +106,16 @@ a{
 
 
 #user_logged{
-	text-decoration: center;
 	background: #1c1c1f;
-	position: absolute;
-	bottom: 0px;
+	position: fixed;
+	left: 0px;
+	bottom: 10px;
+	display: flex;
+	flex-flow: column;
+	align-items: center;
 	border-top: 1px solid #444;
-	width: 8%;
+	width: 135px;
+
 }
 
 #user_logged .user-image{
@@ -97,7 +123,7 @@ a{
 	border-radius: 100px;
 	height: 57px;
 	width: 57px;
-	margin: 0px auto;
+	margin: 0px;
 	margin-top: 15px;
 	overflow: hidden;
 }
@@ -131,10 +157,10 @@ a{
 }
 
 .artist-item .artist-image{
-	background: black;
+	background: #333;
 	height: 200px;
 	width: 100%;
-	border-radius:102px;
+	border-radius:16vw;
 	overflow: hidden;
 }
 .artist-item .artist-image img{
@@ -148,7 +174,7 @@ a{
 	align-content: center;
 	justify-content: center;
 	color: white;
-	height: 70px;
+	height: auto;
 	padding: 10px;
 	/*background: #222326*/
 }
@@ -173,38 +199,44 @@ a{
 	object-fit: cover;
 
 }
-
+.pad-box{
+	width: 100%;
+	height: 200px;
+}
 /*-----------------------*/
 .artist-list,
 .album-list{
-	padding-bottom: 200px;	
+	padding: 0px;
 	display: flex;
 	justify-content: all;
 	align-items: flex-start;
+	padding-bottom: 200px;
+	width: 100%;
 	margin: 0px;
-	padding: 0px;
 	margin-top: 30px;
 	list-style: none;
 }	
+.artist-item,
 .album-item{
-	width: 200px;
 	margin: 0px;
 	padding: 0px;
-	height: 280px;
+	width: 15vw;
+	height: 20vw;
 	/*border: 1px solid #444;*/
 	margin-left: 20px;
 	margin-top: 20px;
 }
-
+.artist-item .artist-image,
 .album-item .album-image{
 	background: black;
-	height: 210px;
-	width: 100%;
+	height: 15vw;
+	width: 15vw;
 	overflow: hidden;
 }
+.artist-item .artist-image img,
 .album-item .album-image img{
 	width: 100%;
-	min-height: 210px;
+	min-height: 100%;
 	object-fit: cover;
 }
 .album-item .album-name{
@@ -213,7 +245,7 @@ a{
 	justify-content: flex-start;
 	align-items: flex-start;
 	color: white;
-	height: 70px;
+	height: auto;
 	padding: 10px;
 	font-weight: 400;
 	/*background: #222326*/
@@ -248,12 +280,32 @@ a{
 	margin: 0px;
 	padding: 0px;
 }
-
+.song-list-item{
+	width: 100%;
+	height: 30px;
+	display: flex;
+	justify-content: flex-start;
+}
+.song-list-item:hover{
+	color:white;
+	background: #303030;
+}
+.song-list-item .song-name{
+	padding-left: 10%;
+	width: 50%;
+}
+.song-list-item .song-name:hover{
+	color:white;
+}
 .song-item{
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	width: 100%;
+	height: 50px;
 	color:white;
 	list-style: none;
 	border-bottom-width: 1px solid #333;
-	padding: 10px; 
 }
 
 .button-warning{
@@ -266,23 +318,47 @@ a{
 	color:#EEE;
 }
 /*Player*/
+.player-div .progress{
+	cursor: pointer;
+	width: 100%;
+	height: 3px;
+	margin: 0px;
+	padding: 0px;
+}
+.progress:hover{
+	height: 5px;
+}
+.progress .percent{
+	width: 0%;
+	background-color: #E22;
+	color: red;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+
 .player-div{
-	height: 80px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-content: center;
+	height: 90px;
 	background: #1c1c1f;
+	width: 100%;
 	position: fixed;
-	width: 90.2%;
 	bottom: 0px;
 	padding-bottom: 0px;
-	padding-left: 10px;
-	margin-left: -15px;
-	border-left: 1px solid #444;
+	margin-left: 0px;
+	border-left: 1px solid #1c1c1f;
 }
 
 .player .album-image{
+	margin-left: 10px;
+	margin-top: 5px;
 	float-left;
 	width: 88px;
 	height: 70px;
-	background: #333;
+	background: #1c1c1f;
 	overflow: hidden;
 }
 .player .album-image img{
@@ -291,25 +367,69 @@ a{
 
 .player .audio-file{
 	display: flex;
+	flex-wrap: wrap;
 	flex-direction: column;
-	justify-content: space-between;
-	height: 43px;
+	justify-content: center;
+	width: 30%;
+	height: 80px;
 	margin-top: 0px;
 	margin-left: 10px;
 }
-.player .audio-file span{
-	height: 2em;
+	.audio-file span{
+	height:24px;
+	}
 
+
+#controls{
+
+	color: #CCC;
+	display: flex;
+	justify-content: space-around;
+	height: 100%;
+	width: 40%;
+	padding-right: 2vw;
+	display: flex;
+	align-items: center;
 }
-.player audio{
-	width: 80%;
-	margin-top: 30px;
-	margin-left: 0px;
-	height: 40px;
+#controls span{
+	width: 10%;
+}
+#controls span:hover{
+	cursor: pointer;
+	font-size: 45px;
+	color:white;
+}
+#controls span:active{
+	cursor: pointer;
+	font-size: 35px;
+	color:white;
+}
+.album-item img:hover,
+.artist-item img:hover{
+	cursor: pointer;
+}
+.nbbut{
+	font-size: 40px;
+}
+#ppbut{
+	font-size: 40px;
+}
 
+#player{
+	width: 90%;
 }
 
 
+.navigation2{
+	color: #CCC;
+	visibility: hidden;
+}
+.navigation2 #navigation{
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
 
 
 .pagination{
@@ -320,6 +440,27 @@ a{
 
 
 
+@media only screen and (max-width: 900px) {
+	.artist-item, 
+	.album-item{
+		width: 20vw;
+	}
+
+	.artist-item .artist-image,
+	.album-item .album-image{
+		background: black;
+		width: 20vw;
+		height: 20vw;
+		overflow: hidden;
+	}
+	.artist-item .artist-image img,
+	.album-item .album-image img{
+		width: 100%;
+		min-height: 100%;
+		object-fit: cover;
+	}
+}
+
 
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
@@ -327,40 +468,113 @@ a{
     	height: 100%;
     	width: 100%;
     }
-    .navigation{
-    	width: 15%;
+    h1{
+    	padding-left: 5%;
+    	font-size: 1em;
     }
+    .navigation{
+    	float:left;
+    	visibility: hidden;
+    }
+    .navigation2{
+    	padding-left: 10%;
+		position: fixed;
+		width: 100%;
+		height: 45px;
+		bottom: 0px;
+		background: #1c1c1f;
+    	visibility: visible;
+    }
+    .navigation2 #navigation{
+    	margin-left: 5%;
+    	width: 100%;
+    }
+	.navigation2 a{
+		background: #1c1c1f;
+		margin: 0px;
+		padding: 0px;
+		font-size: 30px;
+		height: 50px;
+		width: 20%;
+	}
+	.navigation2 a:hover{
+		color: white;
+	}
     .central{
+    	float:left;
     	height: 100%;
-    	width: 85%;
+    	width: 100%;
+    	padding-left: 0px;
     	padding-right: 0px;
+    	padding-bottom: 100px;
+    }
+    #user_logged{
+    	width: 12.5%;
     }
     .artist-list,
 	.album-list{
-		padding-bottom: 200px;	
 		display: flex;
 		justify-content: all;
 		align-items: flex-start;
 		margin: 0px;
 		padding: 0px;
+		padding-bottom: 200px;	
 		margin-top: 30px;
 		list-style: none;
 		font-size: 0.5em;
 	}
+
+	#ppbut{
+		font-size: 30px;
+	}
+	.player-div{
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		width: 100%;
+		margin-left: 0px;
+		height: 50px;
+		bottom: 45px;
+
+	}
+	.player .album-image{
+		height: 100%;
+		width: height;
+	}
+	.player .audio-file{
+	display: flex;
+	flex-wrap: nowrap;
+	flex-direction: column;
+	justify-content: center;
+	font-size: 10px;
+	width: 20%;
+	height: 100%;
+	margin-top: 0px;
+	}
+
+	#controls{
+		height: 100%;
+	}
+	#player{
+		height: 100%;
+		width: 49vw;
+	}
+
 	.artist-item,
 	.album-item{
-	width: 20%;
+	width: 25vw;
 	margin: 0px;
 	padding: 0px;
-	height: 20%;
+	height: auto;
+	margin-left: 5%;
 	/*border: 1px solid #444;*/
 	margin-top: 10px;
 }
 .artist-item .artist-image,
 .album-item .album-image{
 	background: black;
-	width: 50px;
-	height: 50px;
+	width: 100%;
+	height: 25vw;
 	overflow: hidden;
 }
 .artist-item .artist-image img,
@@ -369,4 +583,34 @@ a{
 	min-height: 100%;
 	object-fit: cover;
 }
+
+/*Album detail*/
+.artist-head-card,
+.album-head-card{
+	padding: 20px;
 }
+.artist-head-card .image,
+.album-head-card .image{
+	width: 40vw;
+	height: 40vw;
+	overflow: hidden;
+	float: left;
+	margin-right: 5vw;
+}
+.artist-head-card .image img,
+.album-head-card .image img{
+	min-height: 40vw;
+	width: 40vw;
+	object-fit: cover;
+}
+
+
+
+
+}
+
+
+
+@media only screen and (max-width: 550px) {
+	}
+
