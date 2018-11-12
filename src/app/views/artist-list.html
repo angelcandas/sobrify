@@ -9,7 +9,7 @@
 	<div class="clearfix"></div>
 	<ul class="artist-list row" *ngIf="identity">
 		<li *ngFor="let artist of artists" class="artist-item">
-			<div class="artist-image">
+			<div class="artist-image" [routerLink]="['/artista',artist._id]">
 				<img src="{{urlfile+artist.image}}"/>
 			</div>
 			<div class="artist-name">

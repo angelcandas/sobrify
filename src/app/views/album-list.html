@@ -10,7 +10,7 @@
 	<div class="clearfix"></div>
 	<ul class="album-list row" *ngIf="identity">
 		<li *ngFor="let album of albums" class="album-item">
-			<div class="album-image">
+			<div class="album-image" [routerLink]="['/album',album._id]">
 				<img src="{{urlfile+album.image}}"/>
 			</div>
 			<div class="album-name">

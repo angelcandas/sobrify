@@ -3,6 +3,7 @@ import { UserService } from './services/user.service';
 import { User } from './models/user';
 import { GLOBAL } from './services/global'
 import { Router, ActivatedRoute, Params} from '@angular/router';
+import 'bootstrap';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -19,6 +20,7 @@ export class AppComponent implements OnInit{
 	public alertRegister;
 	public url:string;
 	public urlfile:string;
+	public mobile: boolean;
 	constructor(
 		private _userService: UserService,
 		private _route: ActivatedRoute,
@@ -32,6 +34,12 @@ export class AppComponent implements OnInit{
 	ngOnInit(){
 		this.identity=this._userService.getIdentity();
 		this.token=this._userService.getToken();
+		  if (window.screen.width <= 768) { // 768px portrait
+		    this.mobile = true;
+		  }
+		  else{
+		  	this.mobile = false;
+		  }
 	
 	}
 

@@ -116,6 +116,7 @@ export class AlbumDetailComponent implements OnInit{
 
 	startPlayer(song){
 		let song_player = JSON.stringify(song);
+		var ppbut=document.getElementById("ppbut")
 		let file_path = this.urlfile+song.file;
 		let image_path = this.urlfile+song.album.image;
 		console.log(document.getElementById('mp3-source').getAttribute('src'))
@@ -129,6 +130,6 @@ export class AlbumDetailComponent implements OnInit{
 		document.getElementById("play-song-title").innerHTML=song.name;
 		document.getElementById("play-song-artist").innerHTML=song.album.artist.name;
 		document.getElementById("play-image-album").setAttribute('src',image_path);
-
+		ppbut.setAttribute('class',"fas fa-pause")
 	}
 }

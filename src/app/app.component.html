@@ -1,3 +1,4 @@
+
 <div *ngIf="!identity" class="row justify-content-center col-12">
 	<div class="col-3">
 		<h1>Identificate</h1>
@@ -68,18 +69,14 @@
 
 
 
-<div *ngIf="identity" class="navigation">
+<div *ngIf="identity" class="navigation" id="navbar">
 	<h1 class="head-title">
 		<a [routerLink]="['/']">
 			<span class="fas fa-music" aria-hidden="true"></span>
 			{{title}}
 	  	</a>
 	</h1>	
-	<nav id="navigation">
-		<a href="#">
-			<span class="fas fa-search" aria-hidden="true"></span>
-			Buscar
-		</a>
+	<nav id="navigation"> 
 		<a [routerLink]="['/artistas',1]" [routerLinkActive]="['actived']">
 			<span class="fas fa-star" aria-hidden="true"></span>
 			Artistas
@@ -88,7 +85,6 @@
 			<i class="fas fa-book" aria-hidden="true"></i>
 			Albums
 		</a>
-	</nav>
 	<nav id="user_logged"> 
 		<div  class="user-image" >
 			<img id="image-logged" src="{{urlfile+identity.image}}" />
@@ -100,16 +96,46 @@
 			<span class="fas fa-cog" aria-hidden="true"></span>
 			Mis datos
 		</a>
-		<a (click)="logout()">
+		<a (click)="logout()" class="btn-logout">
 			<span class="fa fa-sign-out" aria-hidden="true"></span>
 			Salir
 		</a>
 
+		</nav>
 	</nav>
 </div>
-<div *ngIf="identity" class="central col-lg-11">
-	<router-outlet></router-outlet>
-	<div class="clearfix"></div>
-	<player class="player"></player>
+
+<div *ngIf="identity" class="navigation2" id="navbar">
+	<nav id="navigation">
+		<a [routerLink]="['/']">
+			<span class="fas fa-music" aria-hidden="true"></span>
+	  	</a>	
+		<a [routerLink]="['/artistas',1]" [routerLinkActive]="['actived']">
+			<span class="fas fa-star" aria-hidden="true"></span>
+		</a>
+		<a [routerLink]="['/albums',1]" [routerLinkActive]="['actived']">
+			<i class="fas fa-book" aria-hidden="true"></i>
+		</a>
+
+		<a [routerLink]="['/mis-datos']" [routerLinkActive]="['actived']">
+			<span class="fas fa-cog" aria-hidden="true"></span>
+		</a>
+		<a (click)="logout()">
+			<span class="fas fa-sign-out-alt" aria-hidden="true"></span>
+		</a>
+
+	</nav>
 </div>
 
+
+
+<div *ngIf="identity" class="content">
+	<div class="central">
+		<router-outlet></router-outlet>	
+		<player class="player"></player>
+	</div>
+</div>
+
+<!-- <div *ngIf=mobile>
+	<h1 style="position:fixed;top:0px">ESTO ES RARO DEBE SER UN MOBIL</h1>
+</div> -->

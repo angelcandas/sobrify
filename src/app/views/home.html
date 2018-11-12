@@ -1,4 +1,4 @@
-<div *ngIf="identity">
+<div *ngIf="identity" class="content">
 <div class="jumbotron" *ngIf="0" >
   <h1 class="display-4">Bienvenido a Musify!</h1>
   <p class="lead">Este es un ejemplo de aplicacion Angular que busca imitar las funcionalidades de Spotify pero en marca blanca.</p>
@@ -12,5 +12,7 @@
 <hr>
 <artist-lista></artist-lista>
 <hr>
-<album-lista></album-lista>
+<div style="margin-top: -200px;">
+	<album-lista></album-lista>	
+</div>
 </div>

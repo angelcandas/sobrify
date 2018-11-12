@@ -3,9 +3,10 @@ import { Router, ActivatedRoute, Params} from '@angular/router';
 import { UserService } from '../services/user.service';	
 
 @Component({
-	selector: 'artist-list',
+	selector: 'app-home',
 	templateUrl: '../views/home.html',
-  	providers: [UserService]
+  	providers: [UserService],
+  	styles:['.artist-list{padding-bottom: 10px;}']
 })
 
 export class HomeComponent implements OnInit{
