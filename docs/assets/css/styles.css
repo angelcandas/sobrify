@@ -61,11 +61,14 @@ a{
 	width: 150px;
 	height: 100%;
 	display: flex;
+	justify-content: flex-start;
 	flex-direction: column;
 	align-items:center;
 	background: #1c1c1f;
 	position: fixed;
 	margin-bottom: 0px;
+	padding-bottom: 185px;
+	min-height: 299px;
 
 }
 /*.navigation{
@@ -277,6 +280,9 @@ a{
 /*Canciones*/
 
 #songs-list{
+	display: flex;
+	flex-direction: column;
+
 	margin: 0px;
 	padding: 0px;
 }
@@ -291,8 +297,7 @@ a{
 	background: #303030;
 }
 .song-list-item .song-name{
-	padding-left: 10%;
-	width: 50%;
+
 }
 .song-list-item .song-name:hover{
 	color:white;
@@ -438,7 +443,12 @@ a{
 	bottom: 0px;
 }
 
+@media only screen and (max-height: 300px) {
+	#user_logged{
+		visibility: hidden;
+	}
 
+}
 
 @media only screen and (max-width: 900px) {
 	.artist-item, 
@@ -559,7 +569,16 @@ a{
 		height: 100%;
 		width: 49vw;
 	}
-
+	.song-list {
+		padding-left: 5px;
+	}
+	.song-list-item .song-name{
+		padding-left: 2%;
+		width: 100%;
+	}
+	.song-list-item .song-name:hover{
+		color:white;
+	}
 	.artist-item,
 	.album-item{
 	width: 25vw;

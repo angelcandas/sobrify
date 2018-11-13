@@ -1,5 +1,5 @@
 
-<div *ngIf="!identity" class="row justify-content-center col-12">
+<div *ngIf="!identity" class="row justify-content-center col-12" >
 	<div class="col-3">
 		<h1>Identificate</h1>
 		<div *ngIf="errorMessage">
@@ -69,7 +69,7 @@
 
 
 
-<div *ngIf="identity" class="navigation" id="navbar">
+<div *ngIf="identity" class="navigation" id="navbar" (window:resize)="onResize($event)">
 	<h1 class="head-title">
 		<a [routerLink]="['/']">
 			<span class="fas fa-music" aria-hidden="true"></span>
@@ -85,11 +85,22 @@
 			<i class="fas fa-book" aria-hidden="true"></i>
 			Albums
 		</a>
+
+		<a [routerLink]="['/mis-datos']" *ngIf="height < 300" [routerLinkActive]="['actived']">
+			<span class="fas fa-cog" aria-hidden="true"></span>
+			Mis datos
+		</a>
+		<a (click)="logout()" class="btn-logout" *ngIf="height < 300" >
+			<span class="fa fa-sign-out" aria-hidden="true"></span>
+			Salir
+		</a>
+
+
 	<nav id="user_logged"> 
-		<div  class="user-image" >
+		<div   class="user-image" >
 			<img id="image-logged" src="{{urlfile+identity.image}}" />
 		</div>
-		<span id="identity_name">			
+		<span id="identity_name" >			
 			{{identity.name}}
 		</span>
 		<a [routerLink]="['/mis-datos']" [routerLinkActive]="['actived']">
